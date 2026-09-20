@@ -61,7 +61,7 @@ The implementation must be 100% production-ready, mathematically rigorous, platf
 
 5. **Deterministic Risk Perimeter (Invariants)**:
    - **Invariant 1 (Delta Neutrality)**: If $|\Delta_{\text{net}}| > 0.0001 \text{ BTC}$, trigger emergency auto-hedge.
-   - **Invariant 2 (De-peg Circuit Breaker)**: If USDT, USDC, or FDUSD deviates $> 50 \text{ bps}$ ($0.50\%$) from $\$1.0000$, halt trading and close all open arbitrage legs immediately.
+   - **Invariant 2 (De-peg Circuit Breaker)**: If USDT, USDC, or FDUSD deviates $> 100 \text{ bps}$ ($1.00\%$) from $\$1.0000$, halt trading and close all open arbitrage legs immediately.
    - **Invariant 3 (Max Drawdown)**: If cumulative paper/live drawdown reaches $\ge 10.0\%$, halt execution.
    - **Invariant 4 (Isolated Margin)**: Maximum leverage $1.0\times$ on perpetual venue. Cross-margin is strictly prohibited.
 

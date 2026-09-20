@@ -121,7 +121,7 @@ graph TD
     A["Live Market Tick Ingest"] --> B{"Invariant 1: Delta Check"}
     B -- "|Delta| > 0.0001 BTC" --> H1["EMERGENCY AUTO-HEDGE"]
     B -- "OK" --> C{"Invariant 2: De-Peg Check"}
-    C -- "USDC/USDT Dev > 50 bps" --> H2["HALT & FLATTEN (Circuit Breaker)"]
+    C -- "USDC/USDT Dev > 100 bps" --> H2["HALT & FLATTEN (Circuit Breaker)"]
     C -- "OK" --> D{"Invariant 3: Margin Utilization"}
     D -- "Margin > 25%" --> H3["REDUCE EXPOSURE"]
     D -- "OK" --> E{"Signal Evaluation: |Z| >= 2.0"}
@@ -130,6 +130,6 @@ graph TD
 ```
 
 1. **Absolute Delta-Neutrality**: If $|\Delta_{\text{net}}| > 0.0001 \text{ BTC}$, the execution router automatically triggers an immediate market hedge order to restore zero delta.
-2. **Stablecoin De-Peg Circuit Breaker**: If USDT, USDC, or FDUSD deviates by more than $50 \text{ bps}$ ($0.50\%$) from $1.0000 \text{ USD}$, all pending orders are cancelled, and active arbitrage legs are immediately unwound.
+2. **Stablecoin De-Peg Circuit Breaker**: If USDT, USDC, or FDUSD deviates by more than $100 \text{ bps}$ ($1.00\%$) from $1.0000 \text{ USD}$, all pending orders are cancelled, and active arbitrage legs are immediately unwound.
 3. **Isolated Margin Cap**: Perpetuals are held strictly under **1x isolated margin**. Zero cross-margin contagion.
 4. **Post-Only Maker Execution**: Every order must be flagged `POST_ONLY` (maker). Any order that would cross the spread as a taker is rejected before dispatch.

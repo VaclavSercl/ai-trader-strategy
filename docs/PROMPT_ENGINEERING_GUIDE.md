@@ -42,7 +42,7 @@ Design, implement, backtest, and generate an autonomous deployment daemon for th
 2. ZERO HUMAN IN THE LOOP: The strategy must run completely autonomously under AI supervision. It must feature self-healing telemetry, automated delta rebalancing, and deterministic circuit breakers.
 3. RISK INVARIANTS:
    - Net Portfolio Delta must equal 0.0 at all times (Spot Long == Perp Short).
-   - Stablecoin peg circuit breaker: Halt immediately if USDC/USDT deviates > 50 bps from parity.
+   - Stablecoin peg circuit breaker: Halt immediately if USDC/USDT deviates > 100 bps from parity.
    - Max Drawdown limit: < 10.0% (historical actual < 0.5%).
    - Maker-Only Execution: Orders must be post-only to earn exchange maker rebates and eliminate taker fees.
 

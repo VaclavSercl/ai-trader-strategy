@@ -18,7 +18,7 @@ This repository is an authoritative, platform-agnostic library of quantitative a
 2. **ABSOLUTE DELTA NEUTRALITY**:
    - Any multi-leg carry or basis strategy must enforce $|\Delta_{\text{net}}| \le 0.0001 \text{ BTC}$ ($Q_{\text{spot}} + Q_{\text{perp}} = 0$).
 3. **DETERMINISTIC CIRCUIT BREAKERS**:
-   - Immediate halt if any stablecoin (USDC, USDT, FDUSD) deviates $> 50 \text{ bps}$ ($0.50\%$) from $\$1.0000$.
+   - Immediate halt if any stablecoin (USDC, USDT, FDUSD) deviates $> 100 \text{ bps}$ ($1.00\%$) from $\$1.0000$.
    - Max Drawdown hard stop: $< 10.0\%$ (historical limit $< 0.5\%$).
 4. **POST-ONLY MAKER EXECUTION**:
    - All order routing must specify maker-only flags (`POST_ONLY`) to harvest exchange rebates and eliminate taker fees.

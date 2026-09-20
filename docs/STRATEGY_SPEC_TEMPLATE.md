@@ -40,7 +40,7 @@ Every strategy submitted or stored in this repository must contain the following
 
 ## 4. Risk Perimeter & Deterministic Invariants
 1. Invariant 1: Delta Neutrality ($|\Delta| \le \epsilon$)
-2. Invariant 2: De-peg Circuit Breaker (Max deviation $\le 50 \text{ bps}$)
+2. Invariant 2: De-peg Circuit Breaker (Max deviation $\le 100 \text{ bps}$)
 3. Invariant 3: Maximum Drawdown Stop ($DD \ge 10\% \implies \text{Emergency Halt}$)
 4. Invariant 4: Maximum Margin Utilization ($\le 25\%$)
 
@@ -76,7 +76,7 @@ Every strategy submitted or stored in this repository must contain the following
   "status": "LIVE_PAPER",
   "invariants": [
     "NET_DELTA_ZERO",
-    "STABLECOIN_PEG_50BPS",
+    "STABLECOIN_PEG_100BPS",
     "MARGIN_UTILIZATION_25PCT",
     "POST_ONLY_EXECUTION"
   ]

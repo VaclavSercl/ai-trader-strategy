@@ -14,7 +14,7 @@ To achieve reliable, safe autonomous operation without human babysitting, every 
 2. **Deterministic Risk Firewalls (The Invariants)**:
    - Rules that no AI or LLM can override:
      * **Net Delta Zero Invariant**: $|\Delta_{\text{portfolio}}| \le \epsilon$ at all times.
-     * **De-peg Circuit Breaker**: If any stablecoin deviates $> 50 \text{ bps}$ from $1.00$, trading stops instantly.
+     * **De-peg Circuit Breaker**: If any stablecoin deviates $> 100 \text{ bps}$ from $1.00$, trading stops instantly.
      * **Maximum Leverage / Margin Limit**: Hard cap on collateral utilization (e.g. $\le 25\%$).
      * **Single-Order Size Ceiling**: Maximum exposure per individual clip.
 3. **Fail-Closed Default**:
@@ -86,7 +86,7 @@ INITIAL_CAPITAL_USD=1000.0
 MAX_DRAWDOWN_LIMIT_PCT=10.0
 OU_ENTRY_Z_SCORE=2.0
 OU_EXIT_Z_SCORE=0.5
-STABLECOIN_DEPEG_LIMIT_BPS=50.0
+STABLECOIN_DEPEG_LIMIT_BPS=100.0
 EXECUTION_MODE="PAPER" # "PAPER" | "LIVE"
 ```
 

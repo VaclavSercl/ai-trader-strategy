@@ -9,5 +9,5 @@ See [AGENTS.md](AGENTS.md) for authoritative, binding instructions for AI agents
 ### Key Invariants:
 - Platform agnostic (no hardcoded paths like `/home/...`)
 - Delta-neutrality (`|delta| <= 0.0001 BTC`)
-- Stablecoin de-peg circuit breaker (`<= 50 bps`)
+- Stablecoin de-peg circuit breaker (`<= 100 bps`)
 - Maker-only execution (`POST_ONLY`)

@@ -108,7 +108,7 @@ flowchart TD
 ```
 
 1. **Decoupled Architecture**: High-level strategic reasoning, regime detection, and parameter optimization are performed by LLM agents; execution is handled by deterministic, zero-allocation Python/Rust micro-engines.
-2. **Deterministic Risk Perimeter**: Hard invariant checks (e.g. Net Delta = 0, Stablecoin peg $\pm 50$ bps, Margin Usage $< 25\%$) operate in immutable code that **cannot be overridden by the LLM**.
+2. **Deterministic Risk Perimeter**: Hard invariant checks (e.g. Net Delta = 0, Stablecoin peg $\pm 100$ bps, Margin Usage $< 25\%$) operate in immutable code that **cannot be overridden by the LLM**.
 3. **Autonomous Lifecycle**: The AI monitors market regime changes, tracks performance drift, and pauses trading or re-hedges without requiring human authorization.
 
 ---

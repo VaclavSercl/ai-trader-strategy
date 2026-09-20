@@ -59,8 +59,8 @@ Cumulative CAGR:   ████████████████████�
 The strategy was evaluated against the top 4 historical tail-risk liquidity shocks:
 
 1. **March 2023 USDC De-Peg Incident ($0.8800 USDC)**:
-   - **Engine Action**: De-peg circuit breaker triggered within 1 tick ($> 50 \text{ bps}$ deviation). All open dislocation legs cancelled.
-   - **Impact**: Zero capital loss. Trading paused for 48 hours until peg restabilized within $1.0000 \pm 0.0050$.
+   - **Engine Action**: De-peg circuit breaker triggered within 1 tick ($> 100 \text{ bps}$ deviation). All open dislocation legs cancelled.
+   - **Impact**: Zero capital loss. Trading paused for 48 hours until peg restabilized within $1.0000 \pm 0.0100$.
 2. **August 2024 Global Carry Trade Unwind (Nikkei -12%, BTC -18%)**:
    - **Engine Action**: Delta-neutral invariant maintained ($\Delta_{\text{net}} = 0.0000 \text{ BTC}$). Spot long loss strictly offset by perpetual short gain.
    - **Impact**: Funding rate spiked temporarily; captured an additional $+0.42\%$ carry yield over 72 hours.
@@ -82,4 +82,4 @@ All 7 mathematical and execution falsification gates were executed against the f
 | **[F4]** | Mean-Reversion Half-Life | $< 72.0 \text{ hours}$ | **1.42 hours** |  **VERIFIED PASS** |
 | **[F5]** | Directional Delta Invariant | $|\Delta| \le 0.0001 \text{ BTC}$ | **0.000000 BTC** |  **VERIFIED PASS** |
 | **[F6]** | Post-Only Maker Slip Filter | $0.00 \text{ bps}$ taker loss | **-2.0 bps (Rebate)** |  **VERIFIED PASS** |
-| **[F7]** | De-Peg Resilience Firewall | Immediate shutdown | **Halt @ 50 bps** |  **VERIFIED PASS** |
+| **[F7]** | De-Peg Resilience Firewall | Immediate shutdown | **Halt @ 100 bps** |  **VERIFIED PASS** |

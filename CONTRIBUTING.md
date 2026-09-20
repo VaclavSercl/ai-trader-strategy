@@ -13,7 +13,7 @@ When authoring or updating strategies in this repository, you **MUST** adhere to
    - Never use absolute system paths (e.g., `/home/...`, `C:\...`, or `/tmp/...`). Always use relative paths (`pathlib.Path(__file__).resolve()`).
    - Never assume specific hardware resources (RAM, GPU, disk speed). Everything must execute in standard POSIX/Docker environments using standard library Python 3.10+ or standard environment variables.
 2. **Deterministic Risk Firewalls (The Invariants)**:
-   - Every strategy must declare non-negotiable risk invariants (e.g., Net Market Delta $\approx 0$, stablecoin de-peg circuit-breaker at $\le 50 \text{ bps}$, leverage cap $\le 1.0\times$).
+   - Every strategy must declare non-negotiable risk invariants (e.g., Net Market Delta $\approx 0$, stablecoin de-peg circuit-breaker at $\le 100 \text{ bps}$, leverage cap $\le 1.0\times$).
 3. **Reproducible AI Prompts**:
    - You must include an `AI_GENERATION_PROMPT.md` written so that any *other* frontier LLM can recreate the entire strategy from scratch without extra context.
 4. **Machine-Readable Metadata**:

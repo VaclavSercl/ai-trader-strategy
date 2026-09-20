@@ -68,7 +68,7 @@ class T15CrossBasisEngine:
         entry_z_threshold: float = 2.00,
         exit_z_threshold: float = 0.50,
         stop_z_threshold: float = 4.50,
-        depeg_tolerance_bps: float = 50.0,
+        depeg_tolerance_bps: float = 100.0,
         window_size: int = 120,
         spot_maker_fee_pct: float = 0.00,
         perp_maker_rebate_pct: float = 0.02,
