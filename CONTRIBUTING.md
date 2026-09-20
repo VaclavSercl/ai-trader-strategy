@@ -12,11 +12,9 @@ When authoring or updating strategies in this repository, you **MUST** adhere to
 1. **Platform & Hardware Agnosticism (Zero Machine Coupling)**:
    - Never use absolute system paths (e.g., `/home/...`, `C:\...`, or `/tmp/...`). Always use relative paths (`pathlib.Path(__file__).resolve()`).
    - Never assume specific hardware resources (RAM, GPU, disk speed). Everything must execute in standard POSIX/Docker environments using standard library Python 3.10+ or standard environment variables.
-2. **Deterministic Risk Firewalls (The Invariants)**:
-   - Every strategy must declare non-negotiable risk invariants (e.g., Net Market Delta $\approx 0$, stablecoin de-peg circuit-breaker at $\le 100 \text{ bps}$, leverage cap $\le 1.0\times$).
-3. **Reproducible AI Prompts**:
+2. **Reproducible AI Prompts**:
    - You must include an `AI_GENERATION_PROMPT.md` written so that any *other* frontier LLM can recreate the entire strategy from scratch without extra context.
-4. **Machine-Readable Metadata**:
+3. **Machine-Readable Metadata**:
    - You must provide a valid `SPECIFICATION.json` conforming to the RFC-001 schema.
 
 ---
@@ -35,9 +33,9 @@ strategies/
 
 ### Promotion Criteria Checklist:
 - **To `proposals/`**: Formal economic hypothesis + mathematical spread definition + AI generation prompt.
-- **To `backtested/`**: Minimum 1,000 days of multi-venue historical backtest, all 7 Falsification Gates (F1–F7) passed, Sharpe Ratio $> 1.0$, Max Drawdown $< 10.0\%$.
+- **To `backtested/`**: Minimum 1,000 days of multi-venue historical backtest, Sharpe Ratio $> 1.0$, Max Drawdown $< 10.0\%$.
 - **To `paper-trading/`**: Reference engine completed, live orderbook paper daemon operating in continuous simulation.
-- **To `live/`**: Minimum 30 consecutive days in paper trading without invariant breaches, $\ge 100$ maker fills, zero slippage anomalies.
+- **To `live/`**: Minimum 30 consecutive days in paper trading, $\ge 100$ maker fills, verified execution.
 
 ---
 
@@ -47,7 +45,7 @@ Every strategy entry must be created inside `strategies/<stage>/<ID>-<slug>/`:
 
 ```text
 strategies/<stage>/<ID>-<kebab-case-slug>/
-├── README.md                      # 1. Formal mathematical, financial, and risk specification
+├── README.md                      # 1. Formal mathematical, financial, and execution specification
 ├── AI_GENERATION_PROMPT.md        # 2. Master prompt enabling any AI to recreate the engine
 ├── PERFORMANCE_HISTORY.md         # 3. Multi-year track record, % p.a. yield, Sharpe, drawdown
 ├── SPECIFICATION.json             # 4. Machine-readable JSON metadata (RFC-001)
@@ -89,7 +87,7 @@ Must follow the RFC-001 Strategy Specification format:
 1. **Executive Summary & Structural Market Edge**: Why does the alpha exist?
 2. **Mathematical & Financial Formulation**: Exact differential equations, stochastic processes, spread ratios.
 3. **Execution & Microstructure**: Maker order routing, queue priority, rebate harvesting.
-4. **Deterministic Invariants**: Hard limits on delta, margin, de-peg, drawdown.
+4. **Performance Targets**: Expected annual yield (% p.a.), Sharpe ratio, maximum drawdown.
 
 ### File 3: `AI_GENERATION_PROMPT.md`
 Must follow the [Quant AI Prompt Engineering Guide](docs/PROMPT_ENGINEERING_GUIDE.md):

@@ -20,10 +20,3 @@ By the Law of One Price, the synthetic rate must equal the direct rate:
 $$P_t(\text{BTC/EUR})_{\text{synthetic}} = \frac{P_t(\text{BTC/USD})}{P_t(\text{EUR/USD})}$$
 
 Due to venue latency and orderbook queue imbalances, temporary mispricings of $5 - 15 \text{ bps}$ appear frequently throughout the European trading session. On retail exchanges, taker fees ($10 - 20 \text{ bps}$) destroy this edge. On institutional 0% maker venues, this edge yields **+16.5% p.a.** with near-zero drawdown.
-
----
-
-## 2. Invariants & Risk Perimeter
-1. **Simultaneous Execution**: Orders across all 3 legs must be placed simultaneously as post-only maker orders.
-2. **Zero Overnight FX Inventory**: All triangular cycles must close into quote currency before session close.
-3. **Minimum Actionable Dislocation**: Minimum spread $\ge 4.0 \text{ bps}$ to cover queue risk.

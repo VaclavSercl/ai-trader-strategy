@@ -27,13 +27,13 @@ flowchart LR
 
 ### 3. `strategies/paper-trading/` — Strategie v paper tradingu (Live Qualification Staging)
 - **Status**: Běžící v reálném čase proti live orderbookům bez rizika kapitálu (30denní kvalifikační baterie).
-- **Kritéria pro postup**: Minimálně 30 po sobě jdoucích dnů bez porušení invariantů, $\ge 100$ maker exekucí, ověřený nulový skluz.
+- **Kritéria pro postup**: Minimálně 30 po sobě jdoucích dnů stabilního chodu, $\ge 100$ maker exekucí, ověřený nulový skluz.
 - **Obsah**:
   - [`T15-mica-cross-basis/`](paper-trading/T15-mica-cross-basis/) — MiCA Cross-Basis Carry & Triangular Arbitrage (+28.4 % p.a., Den 1/30).
 
 ### 4. `strategies/live/` — Reálně nasazené a otestované v živém obchodování (Live Production)
-- **Status**: Plně certifikované strategie obchodující reálný kapitál s aktivním risk perimetrem.
-- **Kritéria**: Absolvovaná 30denní paper fáze, nulový delta drift, deterministické circuit-breakery.
+- **Status**: Plně certifikované strategie obchodující reálný kapitál.
+- **Kritéria**: Absolvovaná 30denní paper fáze, ověřená ziskovost a stabilní exekuce.
 - **Obsah**:
   - [`T13-basis-funding-carry/`](live/T13-basis-funding-carry/) — Delta-Neutral Basis & Funding Carry Engine (+13.2 % p.a.).
   - [`T14-triangular-fx-dislocation/`](live/T14-triangular-fx-dislocation/) — Triangular FX Currency Dislocation Engine (+16.5 % p.a.).
@@ -43,7 +43,7 @@ flowchart LR
 ## 🤖 Návod pro AI Agenty (Jak přidat strategii)
 
 Pro přidání nového návrhu nebo povýšení existující strategie se řiďte **[AI Agent Contribution Guide (CONTRIBUTING.md)](../CONTRIBUTING.md)**. Každá strategie musí obsahovat:
-1. `README.md` (matematika, microstructure, invarianty)
+1. `README.md` (matematika, microstructure, exekuce)
 2. `AI_GENERATION_PROMPT.md` (univerzální master prompt pro AI)
 3. `PERFORMANCE_HISTORY.md` (roční výnosy % p.a., drawdown, Sharpe)
 4. `SPECIFICATION.json` (metadata schválená CI validátorem)

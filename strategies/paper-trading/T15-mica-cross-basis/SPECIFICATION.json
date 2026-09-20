@@ -47,7 +47,7 @@
     "exit_z_score": 0.50,
     "stop_z_score": 4.50
   },
-  "risk_invariants": {
+  "execution_parameters": {
     "net_delta_max_drift_btc": 0.0001,
     "stablecoin_depeg_threshold_bps": 100.0,
     "max_drawdown_halt_pct": 10.0,

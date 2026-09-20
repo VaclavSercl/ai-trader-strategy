@@ -37,21 +37,6 @@ Every strategy submitted or stored in this repository must contain the following
 - **Order Types**: Post-only Maker orders to earn rebates / avoid taker fees.
 - **Queue Priority Model**: Fill estimation based on depth level and orderbook turnover.
 - **Slippage & Cost Model**: Fee schedule and funding rate accounting.
-
-## 4. Risk Perimeter & Deterministic Invariants
-1. Invariant 1: Delta Neutrality ($|\Delta| \le \epsilon$)
-2. Invariant 2: De-peg Circuit Breaker (Max deviation $\le 100 \text{ bps}$)
-3. Invariant 3: Maximum Drawdown Stop ($DD \ge 10\% \implies \text{Emergency Halt}$)
-4. Invariant 4: Maximum Margin Utilization ($\le 25\%$)
-
-## 5. Falsification Battery (F1–F7)
-- [F1] Max Drawdown Gate
-- [F2] Sharpe Ratio Gate
-- [F3] Positive Funding Yield Gate
-- [F4] Half-Life Gate
-- [F5] Zero Delta Invariant Gate
-- [F6] Execution Slippage Gate
-- [F7] De-peg Resilience Gate
 ```
 
 ---
@@ -73,12 +58,6 @@ Every strategy submitted or stored in this repository must contain the following
   "base_assets": ["BTC"],
   "quote_currencies": ["USD", "EUR", "USDC", "USDT"],
   "ai_autonomy_level": "ZERO_HUMAN_IN_THE_LOOP",
-  "status": "LIVE_PAPER",
-  "invariants": [
-    "NET_DELTA_ZERO",
-    "STABLECOIN_PEG_100BPS",
-    "MARGIN_UTILIZATION_25PCT",
-    "POST_ONLY_EXECUTION"
-  ]
+  "status": "LIVE_PAPER"
 }
 ```

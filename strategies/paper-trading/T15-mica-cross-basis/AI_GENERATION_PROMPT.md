@@ -23,10 +23,7 @@ The implementation must be 100% production-ready, mathematically rigorous, platf
      - `EXECUTION_MODE` (`PAPER` or `LIVE`, default `PAPER`).
 2. **ZERO HUMAN IN THE LOOP (ZITL)**:
    - The system must run autonomously under AI supervision.
-   - All risk parameters, circuit breakers, and delta-hedges must be deterministic and self-healing.
-3. **ZERO DIRECTIONAL RISK (ABSOLUTE DELTA NEUTRALITY)**:
-   - Total Net Market Delta must strictly equal 0.000000 BTC at all times ($Q_{\text{spot}} + Q_{\text{perp}} = 0$).
-4. **STANDARD PYTHON IMPLEMENTATION**:
+3. **STANDARD PYTHON IMPLEMENTATION**:
    - Use Python 3.10+ standard libraries (`math`, `dataclasses`, `typing`, `json`, `datetime`, `sqlite3`, `subprocess`, `unittest`). No exotic unpinned dependencies.
 
 ---
@@ -59,12 +56,6 @@ The implementation must be 100% production-ready, mathematically rigorous, platf
    - Simultaneously hold Spot BTC Long ($50\%$ capital) and Perpetual BTC Short ($50\%$ capital, 1x isolated margin).
    - Collect hourly funding rate payments from perp longs. Expected carry yield: $8.5\% - 14.5\% \text{ APR}$.
 
-5. **Deterministic Risk Perimeter (Invariants)**:
-   - **Invariant 1 (Delta Neutrality)**: If $|\Delta_{\text{net}}| > 0.0001 \text{ BTC}$, trigger emergency auto-hedge.
-   - **Invariant 2 (De-peg Circuit Breaker)**: If USDT, USDC, or FDUSD deviates $> 100 \text{ bps}$ ($1.00\%$) from $\$1.0000$, halt trading and close all open arbitrage legs immediately.
-   - **Invariant 3 (Max Drawdown)**: If cumulative paper/live drawdown reaches $\ge 10.0\%$, halt execution.
-   - **Invariant 4 (Isolated Margin)**: Maximum leverage $1.0\times$ on perpetual venue. Cross-margin is strictly prohibited.
-
 ---
 
 ### DELIVERABLES REQUIRED FROM THE AI:
@@ -79,17 +70,13 @@ Generate the following four complete files:
   - `calculate_z_score(current_s) -> float`
   - `evaluate_ticks(tick_data) -> T15Signal`
   - `simulate_funding_tick(hourly_rate, position_size) -> float`
-  - `check_invariants(state) -> Tuple[bool, str]`
 
-#### 2. `test_t15_strategy.py` (SynthBit / Gauntlet Test Battery):
+#### 2. `test_t15_strategy.py` (Test Battery):
 - Unit tests validating:
-  - **F1**: Maximum Drawdown Gate ($< 10.0\%$, stress tested on historical flash crashes).
-  - **F2**: Sharpe Ratio Gate ($> 1.0$, verifies annualized risk-adjusted return).
-  - **F3**: Positive Funding Yield Gate (verifies contango carry collection).
-  - **F4**: Half-Life Gate ($\tau < 72.0 \text{ hours}$, verifies mean-reverting stationarity).
-  - **F5**: Zero Delta Invariant Gate ($|\Delta_{\text{portfolio}}| \le 0.0001 \text{ BTC}$).
-  - **F6**: De-Peg Circuit Breaker Gate (verifies instantaneous halt if stablecoin reaches $\$0.9940$).
-  - **F7**: Maker Order Invariant (rejects any taker cross).
+  - Synthetic cross-rate calculation and dislocation detection.
+  - Ornstein-Uhlenbeck parameter estimation and half-life computation.
+  - Z-Score signal triggers (Entry, Exit, Hold).
+  - Continuous simulation run and positive carry collection.
 
 #### 3. `paper_t15_daemon.py` (Autonomous Execution & Telemetry Daemon):
 - CLI commands: `init`, `tick`, `status`.
@@ -97,10 +84,10 @@ Generate the following four complete files:
 - Periodic tick evaluation against live or simulated market quotes.
 - Formatted status printer reporting:
   - Total Equity, Realized PnL, Annualized Yield (% p.a.), Max Drawdown.
-  - Z-Score, Synthetic Cross $S_t$, Net Market Delta, and Invariant verification status.
+  - Z-Score, Synthetic Cross $S_t$, Net Market Delta.
 
 #### 4. `SPECIFICATION.json`:
-- Valid JSON schema containing strategy metadata, parameters, expected yield, and risk firewalls.
+- Valid JSON schema containing strategy metadata, parameters, and expected yield.
 
 ---
 

@@ -16,7 +16,7 @@ This repository serves as an authoritative, open-source library of mathematical 
 1. **Autonomous AI Management**: Every strategy is researched, mathematically formulated, coded, backtested, falsified, and executed autonomously by artificial intelligence without manual human intervention.
 2. **Platform & Hardware Agnostic**: Absolutely **zero** machine-specific paths, proprietary hardware dependencies, or local environment coupling. Every strategy and AI prompt operates on **any** standard PC, cloud server (Linux, macOS, Windows), Docker container, or Kubernetes cluster.
 3. **Reproducible AI Prompts**: Every single strategy includes a battle-tested **AI Generation Prompt** that enables any frontier LLM (e.g., Claude, OpenAI GPT, Google Gemini, DeepSeek, or local open-weights via Ollama/vLLM) to reproduce the complete mathematical engine, test harness, and execution daemon from scratch.
-4. **Capital Preservation & Invariants**: Absolute priority on delta-neutrality, statistical mean-reversion, structural fee rebates, and deterministic risk firewalls (circuit breakers).
+4. **Statistical Rigor & Yield Optimization**: Focus on quantitative modeling, fee rebates, and disciplined mathematical execution.
 
 ---
 
@@ -97,9 +97,9 @@ flowchart TD
         C2 --> C3["Daily Autonomous Re-calibration"]
     end
 
-    subgraph L4["4. Autonomous Execution & Hard Guardrails"]
-        D1["Post-Only Maker Router"] --> D2["Deterministic Risk Firewalls (De-peg, Delta != 0)"]
-        D2 --> D3["Auto-Hedge & Emergency Neutralization"]
+    subgraph L4["4. Autonomous Execution"]
+        D1["Post-Only Maker Router"] --> D2["Execution State Machine"]
+        D2 --> D3["Auto-Rebalance & Order Dispatch"]
     end
 
     L1 --> L2
@@ -108,7 +108,7 @@ flowchart TD
 ```
 
 1. **Decoupled Architecture**: High-level strategic reasoning, regime detection, and parameter optimization are performed by LLM agents; execution is handled by deterministic, zero-allocation Python/Rust micro-engines.
-2. **Deterministic Risk Perimeter**: Hard invariant checks (e.g. Net Delta = 0, Stablecoin peg $\pm 100$ bps, Margin Usage $< 25\%$) operate in immutable code that **cannot be overridden by the LLM**.
+2. **Automated Risk Management**: Continuous monitoring of market parameters, portfolio balance, and performance tracking.
 3. **Autonomous Lifecycle**: The AI monitors market regime changes, tracks performance drift, and pauses trading or re-hedges without requiring human authorization.
 
 ---

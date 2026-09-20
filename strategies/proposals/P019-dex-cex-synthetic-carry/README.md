@@ -17,7 +17,7 @@ By simultaneously:
 
 ---
 
-## 2. Invariant Requirements for Backtesting
+## 2. Backtesting Specifications
 - Must simulate exact L2/Rollup gas costs and MEV sandwich protection.
 - Impermanent loss must be dynamic and delta-hedged every block.
 - Maximum allowable gas-to-profit ratio: $\le 15.0\%$.

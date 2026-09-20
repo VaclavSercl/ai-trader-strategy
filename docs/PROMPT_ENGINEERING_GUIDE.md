@@ -16,8 +16,8 @@ A high-performing quant prompt must never be vague or open-ended. It must supply
    - Detail the economic driver: Why does the alpha exist? (Regulatory friction, structural funding contango, cross-venue latency, maker rebates).
 3. **Rigid Mathematical Formulation**:
    - Exact differential equations, stochastic processes (e.g. Ornstein-Uhlenbeck), cointegration tests, and statistical spread definitions.
-4. **Deterministic Risk Invariants (Non-Negotiable)**:
-   - Mathematical guardrails that must be hardcoded (Delta neutrality, de-peg circuit breakers, isolated margin constraints).
+4. **Execution & Microstructure Rules**:
+   - Order routing logic, queue priority, and maker rebate harvesting.
 5. **Universal & Platform-Agnostic Execution**:
    - Strictly prohibit hardware-specific, local, or platform-specific paths. Require pure standard library Python, environment variable configuration, or lightweight SQLite/PostgreSQL connectors.
 6. **Falsification Battery (F1–F7)**:
@@ -39,12 +39,8 @@ Design, implement, backtest, and generate an autonomous deployment daemon for th
 
 ### CONSTRAINTS:
 1. PLATFORM AGNOSTIC: Do not use any machine-specific, user-specific, or hardware-specific paths. The code must run on any Linux, macOS, or Windows computer, in Docker, or on any cloud server.
-2. ZERO HUMAN IN THE LOOP: The strategy must run completely autonomously under AI supervision. It must feature self-healing telemetry, automated delta rebalancing, and deterministic circuit breakers.
-3. RISK INVARIANTS:
-   - Net Portfolio Delta must equal 0.0 at all times (Spot Long == Perp Short).
-   - Stablecoin peg circuit breaker: Halt immediately if USDC/USDT deviates > 100 bps from parity.
-   - Max Drawdown limit: < 10.0% (historical actual < 0.5%).
-   - Maker-Only Execution: Orders must be post-only to earn exchange maker rebates and eliminate taker fees.
+2. ZERO HUMAN IN THE LOOP: The strategy must run completely autonomously under AI supervision.
+3. MAKER EXECUTION: Orders must be post-only to earn exchange maker rebates and eliminate taker fees.
 
 ### ECONOMIC & MATHEMATICAL FORMULATION:
 [Insert formal equations, cross-rate ratios, Ornstein-Uhlenbeck drift parameters, and fee models]

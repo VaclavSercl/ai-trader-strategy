@@ -26,10 +26,3 @@ Strategy T13 is a foundational cash-and-carry quantitative engine designed to ha
   Where $F_h$ is the hourly funding rate.
 - **Combined Round-Trip Fee Advantage**:
   $$\text{Fee}_{\text{total}} = \text{Fee}_{\text{spot}}^{\text{maker}} + \text{Fee}_{\text{perp}}^{\text{maker}} = 0.00\% + (-0.02\%) = -0.02\% \quad (\text{Net Rebate})$$
-
----
-
-## 3. Invariants & Risk Perimeter
-1. **Delta Neutrality**: $|\Delta| \le 0.0001 \text{ BTC}$. Auto-rebalance if price drifts $> 30\%$.
-2. **Minimum Entry Spread**: Enters basis only when perp price trades at a premium $\ge +0.02\%$ above spot.
-3. **Margin Safety**: Maximum $1.0\times$ isolated leverage on perpetual short.

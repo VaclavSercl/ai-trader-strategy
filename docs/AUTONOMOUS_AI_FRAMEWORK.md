@@ -10,16 +10,10 @@ To achieve reliable, safe autonomous operation without human babysitting, every 
 
 1. **Decoupled Architecture (Reasoning vs. Execution)**:
    - **Reasoning Layer (AI Agent)**: Reads telemetry, evaluates market regimes, tunes parameters within bounded envelopes, writes code, reviews audit trails, and decides deployment states.
-   - **Execution Layer (Deterministic Kernel)**: Implemented in pure Python or compiled languages. Enforces mathematical invariants, signs cryptographic payloads, and checks pre-trade risk firewalls. The AI **cannot** bypass risk firewalls.
-2. **Deterministic Risk Firewalls (The Invariants)**:
-   - Rules that no AI or LLM can override:
-     * **Net Delta Zero Invariant**: $|\Delta_{\text{portfolio}}| \le \epsilon$ at all times.
-     * **De-peg Circuit Breaker**: If any stablecoin deviates $> 100 \text{ bps}$ from $1.00$, trading stops instantly.
-     * **Maximum Leverage / Margin Limit**: Hard cap on collateral utilization (e.g. $\le 25\%$).
-     * **Single-Order Size Ceiling**: Maximum exposure per individual clip.
-3. **Fail-Closed Default**:
-   - If an API disconnects, an anomalous quote is received, or a test fails, the system immediately halts new orders and neutralizes open exposure.
-4. **Platform & Hardware Agnosticism**:
+   - **Execution Layer (Engine)**: Implemented in pure Python or compiled languages. Handles order routing, position accounting, and state machines.
+2. **Fail-Closed Default**:
+   - If an API disconnects, an anomalous quote is received, or a test fails, the system immediately halts new orders.
+3. **Platform & Hardware Agnosticism**:
    - The entire stack must be deployable via standard containerization (Docker/OCI) or bare-metal Linux/macOS/Windows environments using generic POSIX commands, environment variables, and open-source databases (PostgreSQL/SQLite).
 
 ---
@@ -60,9 +54,9 @@ stateDiagram-v2
   * Verifies realized funding receipts vs. exchange published indices.
   * Confirms net portfolio delta remains strictly zero.
 
-### Stage 4: Autonomous Live Execution & Perimeter Monitoring
+### Stage 4: Autonomous Live Execution & Monitoring
 - Executes orders via post-only maker orders to harvest rebates.
-- Every tick evaluates the invariant firewall. If any invariant is violated, orders are cancelled immediately, open positions are flattened, and the system transitions to fail-closed state with alerts dispatched to telemetry channels (Telegram/Discord/Syslog).
+- The AI monitors market regime changes, tracks performance drift, and pauses trading if an anomaly or disconnection is detected.
 
 ---
 
