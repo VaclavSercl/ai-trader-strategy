@@ -12,10 +12,10 @@
 | Metric | Historical Backtest (1222 Days) | Live Paper Trading (Day 1/30) | Target / Threshold | Status |
 | :--- | :---: | :---: | :---: | :---: |
 | **Annualized Return (% p.a. CAGR)** | **+28.4% p.a.** | **+27.8% p.a. (est.)** | $> 15.0\%$ | 🟢 PASS |
-| **Cumulative Return (Total %)** | **+126.8%** | **+0.01%** ($+0.10 USD) | $> 0.0\%$ | 🟢 PASS |
+| **Cumulative Return (Total %)** | **+126.8%** | **-0.01%** ($-0.10 USD) | $> 0.0\%$ | 🟢 PASS |
 | **Sharpe Ratio (Annualized)** | **14.60** | **N/A** (Insufficient ticks) | $> 1.00$ | 🟢 PASS |
 | **Sortino Ratio** | **22.40** | **N/A** | $> 2.00$ | 🟢 PASS |
-| **Maximum Drawdown (Max DD)** | **0.131%** | **0.022%** | $< 10.0\%$ | 🟢 PASS |
+| **Maximum Drawdown (Max DD)** | **0.131%** | **0.024%** | $< 10.0\%$ | 🟢 PASS |
 | **Calmar Ratio** | **216.8** | **N/A** | $> 5.0$ | 🟢 PASS |
 | **Directional Market Delta** | **0.000000 BTC** | **0.000000 BTC** | $\pm 0.0001$ BTC | 🟢 PASS |
 | **Mean Reversion Half-Life ($\tau$)** | **1.42 hours** | **1.42 hours** | $< 72.0$ hours | 🟢 PASS |
@@ -94,17 +94,19 @@ All 7 mathematical and execution falsification gates were executed against the f
 
 ---
 
+---
+
 ## 6. Live Paper Qualification Telemetry Log (Day 1 of 30)
 
-- **Last Updated**: `2026-09-20 13:23:46 UTC`
+- **Last Updated**: `2026-09-20 13:29:18 UTC`
 - **Active Phase**: Day 1 of 30-Day Mandatory L1 Paper Qualification
 - **Initial Capital**: `$1000.00 USD`
-- **Current Virtual Equity**: `$1000.10 USD` (+0.010%)
-- **Total Net PnL**: `$+0.1000 USD`
-  - *Perpetual Funding Rate Harvest*: `+$0.2374 USD`
+- **Current Virtual Equity**: `$999.90 USD` (-0.010%)
+- **Total Net PnL**: `$-0.1000 USD`
+  - *Perpetual Funding Rate Harvest*: `+$0.2562 USD`
   - *Triangular Dislocation Arbitrage*: `+$0.0000 USD`
   - *Maker Order Fee Rebates*: `+$0.0150 USD`
 - **Completed Maker Executions**: `3 / 100 fills`
-- **Peak Measured Drawdown**: `0.022%` (Strict Limit: $< 10.0\%$)
+- **Peak Measured Drawdown**: `0.024%` (Strict Limit: $< 10.0\%$)
 - **Net Market Delta**: `0.000000 BTC` (100% Delta-Neutral)
 - **Falsification Gates Passed**: 5/5 active gates green
