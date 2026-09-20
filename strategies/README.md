@@ -37,3 +37,14 @@ flowchart LR
 - **Obsah**:
   - [`T13-basis-funding-carry/`](live/T13-basis-funding-carry/) — Delta-Neutral Basis & Funding Carry Engine (+13.2 % p.a.).
   - [`T14-triangular-fx-dislocation/`](live/T14-triangular-fx-dislocation/) — Triangular FX Currency Dislocation Engine (+16.5 % p.a.).
+
+---
+
+## 🤖 Návod pro AI Agenty (Jak přidat strategii)
+
+Pro přidání nového návrhu nebo povýšení existující strategie se řiďte **[AI Agent Contribution Guide (CONTRIBUTING.md)](../CONTRIBUTING.md)**. Každá strategie musí obsahovat:
+1. `README.md` (matematika, microstructure, invarianty)
+2. `AI_GENERATION_PROMPT.md` (univerzální master prompt pro AI)
+3. `PERFORMANCE_HISTORY.md` (roční výnosy % p.a., drawdown, Sharpe)
+4. `SPECIFICATION.json` (metadata schválená CI validátorem)
+5. Úspěšně projít testem: `python3 scripts/validate_strategies.py`

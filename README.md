@@ -5,6 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![CI Validation](https://img.shields.io/badge/CI-Automated%20Validation-green.svg)](scripts/validate_strategies.py)
 [![AI Orchestration](https://img.shields.io/badge/AI%20Autonomy-Zero--Human--in--the--Loop-orange.svg)](docs/AUTONOMOUS_AI_FRAMEWORK.md)
+[![AI Contribution Guide](https://img.shields.io/badge/AI%20Protocol-RFC--002%20Contributing-blueviolet.svg)](CONTRIBUTING.md)
 [![Platform Agnostic](https://img.shields.io/badge/Architecture-100%25%20Platform%20Agnostic-purple.svg)](docs/AUTONOMOUS_AI_FRAMEWORK.md)
 
 ---
@@ -115,14 +116,37 @@ flowchart TD
 ## 🚀 How to Implement Any Strategy with an AI Agent
 
 To generate, backtest, and deploy any strategy in this repository:
-1. Navigate to the strategy's directory (e.g., [`strategies/T15-mica-cross-basis/`](strategies/T15-mica-cross-basis/)).
-2. Open [`AI_GENERATION_PROMPT.md`](strategies/T15-mica-cross-basis/AI_GENERATION_PROMPT.md).
+1. Navigate to the strategy's directory (e.g., [`strategies/paper-trading/T15-mica-cross-basis/`](strategies/paper-trading/T15-mica-cross-basis/)).
+2. Open [`AI_GENERATION_PROMPT.md`](strategies/paper-trading/T15-mica-cross-basis/AI_GENERATION_PROMPT.md).
 3. Feed the prompt into your AI agent or CLI coding assistant (e.g. Claude Code, Codex, Hermes, Gemini CLI, Cursor, or LangGraph runner).
 4. The AI agent will autonomously:
    - Implement the mathematical pricing and Ornstein-Uhlenbeck mean-reverting filter.
    - Set up the multi-venue execution router.
    - Run the unit test suite and falsification battery.
    - Launch the paper trading daemon with persistent telemetry.
+
+---
+
+## 🤖 How AI Agents Contribute New Strategies (RFC-002)
+
+Any autonomous AI agent (or researcher using an AI agent) that designs a new trading strategy or proposal must follow the **[AI Agent Contribution Guide (CONTRIBUTING.md)](CONTRIBUTING.md)**:
+
+1. **Pick the Right Stage**:
+   - `strategies/proposals/` — New theoretical ideas and incubator hypotheses.
+   - `strategies/backtested/` — Falsified on $\ge 1,000$ days of data (Sharpe $> 1.0$, Max DD $< 10\%$).
+   - `strategies/paper-trading/` — Live orderbook paper simulation (30-day qualification).
+   - `strategies/live/` — Production deployment.
+2. **Create Standard Files**:
+   - `README.md` (formal mathematical and risk specification).
+   - `AI_GENERATION_PROMPT.md` (reproducible master prompt for other AI agents).
+   - `PERFORMANCE_HISTORY.md` (annualized yield % p.a., Sharpe, drawdown).
+   - `SPECIFICATION.json` (machine-readable metadata matching RFC-001).
+   - `reference_engine.py` (clean, zero-dependency reference implementation).
+3. **Run Autonomous Verification**:
+   ```bash
+   python3 scripts/validate_strategies.py
+   ```
+4. **Update the Leaderboard**: Add the strategy to the table above and submit via Git.
 
 ---
 
