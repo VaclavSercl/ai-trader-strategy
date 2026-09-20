@@ -19,11 +19,11 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 
 def validate_strategies() -> bool:
     all_valid = True
-    stages = ["live", "paper-trading", "backtested", "proposals"]
+    stages = ["01-live-production", "02-paper-trading", "03-backtested", "04-proposals"]
     strategy_dirs = []
 
     for stage in stages:
-        stage_path = REPO_ROOT / "strategies" / stage
+        stage_path = REPO_ROOT / stage
         if stage_path.exists():
             for item in stage_path.iterdir():
                 if item.is_dir() and not item.name.startswith("."):
