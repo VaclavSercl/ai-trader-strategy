@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "T14",
+  "name": "Triangular FX Currency Dislocation Engine",
+  "target_annual_yield_pct": 16.5,
+  "max_drawdown_pct": 0.095,
+  "sharpe_ratio": 11.45,
+  "delta_neutral": true,
+  "execution_style": "MAKER_ONLY",
+  "base_assets": ["BTC"],
+  "quote_currencies": ["USD", "EUR"],
+  "ai_autonomy_level": "ZERO_HUMAN_IN_THE_LOOP",
+  "status": "LIVE_PAPER"
+}

@@ -1,0 +1,40 @@
+name: Validate AI Strategies
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-specs:
+    name: Validate Strategy Specs & Reference Engines
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Validate JSON Schemas
+        run: |
+          python -c "
+          import json, glob
+          for spec in glob.glob('strategies/**/SPECIFICATION.json', recursive=True):
+              print(f'Validating {spec}...')
+              with open(spec) as f:
+                  data = json.load(f)
+                  assert 'id' in data, f'Missing id in {spec}'
+                  assert 'target_annual_yield_pct' in data or 'financial_metrics' in data, f'Missing yield in {spec}'
+          print('All strategy specifications are valid JSON.')
+          "
+
+      - name: Execute Reference Engines Smoke Tests
+        run: |
+          python strategies/T15-mica-cross-basis/reference_engine.py

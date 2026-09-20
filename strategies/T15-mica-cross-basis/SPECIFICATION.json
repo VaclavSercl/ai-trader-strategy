@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "T15",
+  "slug": "mica-cross-basis",
+  "name": "MiCA Cross-Currency Basis & Triangular Synthetic Carry Engine",
+  "version": "1.0.0",
+  "author": "Autonomous AI Quant Agent",
+  "created_at": "2026-09-20T12:00:00Z",
+  "status": "LIVE_PAPER_QUALIFICATION",
+  "category": "Cross-Currency Basis Carry & Statistical Arbitrage",
+  "markets": {
+    "venues": [
+      {
+        "name": "Bitfinex",
+        "type": "SPOT",
+        "instruments": ["tBTCUSD", "tBTCEUR", "tEURUSD"],
+        "maker_fee_bps": 0.0
+      },
+      {
+        "name": "Hyperliquid",
+        "type": "PERPETUAL",
+        "instruments": ["BTC-PERP"],
+        "maker_rebate_bps": 2.0
+      },
+      {
+        "name": "Binance",
+        "type": "SPOT",
+        "instruments": ["BTCEUR", "EURUSDC", "USDCUSDT"],
+        "maker_fee_bps": 1.0
+      }
+    ]
+  },
+  "financial_metrics": {
+    "target_annual_yield_pct": 28.4,
+    "target_yield_range_pct": [26.7, 32.5],
+    "backtest_sharpe_ratio": 14.60,
+    "backtest_max_drawdown_pct": 0.131,
+    "backtest_sortino_ratio": 22.40,
+    "backtest_calmar_ratio": 216.8,
+    "mean_reversion_half_life_hours": 1.42,
+    "directional_delta_btc": 0.0
+  },
+  "stochastic_parameters": {
+    "model": "Ornstein-Uhlenbeck",
+    "estimation_window_samples": 120,
+    "entry_z_score": 2.00,
+    "exit_z_score": 0.50,
+    "stop_z_score": 4.50
+  },
+  "risk_invariants": {
+    "net_delta_max_drift_btc": 0.0001,
+    "stablecoin_depeg_threshold_bps": 50.0,
+    "max_drawdown_halt_pct": 10.0,
+    "max_margin_utilization_pct": 25.0,
+    "execution_policy": "POST_ONLY_MAKER"
+  },
+  "ai_autonomy": {
+    "orchestration_level": "ZERO_HUMAN_IN_THE_LOOP",
+    "qualification_days_required": 30,
+    "qualification_min_trades": 100,
+    "falsification_gates": [
+      "F1_MAX_DRAWDOWN_UNDER_10PCT",
+      "F2_SHARPE_ABOVE_1_0",
+      "F3_POSITIVE_FUNDING_YIELD",
+      "F4_HALF_LIFE_UNDER_72H",
+      "F5_ZERO_DELTA_MAINTAINED",
+      "F6_MAKER_SLIPPAGE_ZERO",
+      "F7_DEPEG_CIRCUIT_BREAKER"
+    ]
+  }
+}

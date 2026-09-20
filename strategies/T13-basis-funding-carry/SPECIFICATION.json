@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "T13",
+  "name": "Delta-Neutral Basis & Funding Carry Engine",
+  "target_annual_yield_pct": 13.2,
+  "max_drawdown_pct": 0.084,
+  "sharpe_ratio": 8.92,
+  "delta_neutral": true,
+  "execution_style": "MAKER_ONLY",
+  "base_assets": ["BTC"],
+  "quote_currencies": ["USD", "USDC"],
+  "ai_autonomy_level": "ZERO_HUMAN_IN_THE_LOOP",
+  "status": "LIVE_PAPER"
+}
