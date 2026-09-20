@@ -24,32 +24,32 @@ When authoring or updating strategies in this repository, you **MUST** adhere to
 
 ---
 
-## 2. The 4-Stage Lifecycle Progression
+## 2. The 4-Stage Lifecycle Progression (Top-Level Category Directories)
 
-An AI agent must place the strategy into the appropriate stage directory based on its current empirical maturity:
+An AI agent must place the strategy into the appropriate category directory based on its current empirical maturity:
 
 ```text
-strategies/
-├── proposals/          # Stage 1: New hypotheses, incubator ideas, pre-backtest models
-├── backtested/         # Stage 2: Falsified on >=1000 days of data, Sharpe > 1.0, DD < 10%
-├── paper-trading/      # Stage 3: Active live simulation against real orderbooks (30 days)
-└── live/               # Stage 4: Certified production execution with real capital
+ai-trader-strategy/
+├── 01-live-production/   # Stage 1: Certified production execution with real capital
+├── 02-paper-trading/     # Stage 2: Active live simulation against real orderbooks (30 days)
+├── 03-backtested/        # Stage 3: Falsified on >=1000 days of data, Sharpe > 1.0, DD < 10%
+└── 04-proposals/         # Stage 4: New hypotheses, incubator ideas, pre-backtest models
 ```
 
 ### Promotion Criteria Checklist:
-- **To `proposals/`**: Formal economic hypothesis + mathematical spread definition + Master AI prompt.
-- **To `backtested/`**: Minimum 1,000 days of multi-venue historical backtest, Sharpe Ratio $> 1.0$, Max Drawdown $< 10.0\%$.
-- **To `paper-trading/`**: Live orderbook paper daemon operating in continuous simulation.
-- **To `live/`**: Minimum 30 consecutive days in paper trading, $\ge 100$ maker fills, verified execution.
+- **To `04-proposals/`**: Formal economic hypothesis + mathematical spread definition + Master AI prompt.
+- **To `03-backtested/`**: Minimum 1,000 days of multi-venue historical backtest, Sharpe Ratio $> 1.0$, Max Drawdown $< 10.0\%$.
+- **To `02-paper-trading/`**: Live orderbook paper daemon operating in continuous simulation.
+- **To `01-live-production/`**: Minimum 30 consecutive days in paper trading, $\ge 100$ maker fills, verified execution.
 
 ---
 
 ## 3. Directory & File Structure Requirements (Exactly 4 Files per Strategy)
 
-Every strategy entry must be created inside `strategies/<stage>/<ID>-<slug>/`:
+Every strategy entry must be created inside `<stage_dir>/<ID>-<kebab-case-slug>/`:
 
 ```text
-strategies/<stage>/<ID>-<kebab-case-slug>/
+<stage_dir>/<ID>-<kebab-case-slug>/
 ├── README.md                      # 1. Formal mathematical, financial, and execution specification
 ├── AI_GENERATION_PROMPT.md        # 2. Master prompt enabling any AI to recreate and deploy the engine
 ├── PERFORMANCE_HISTORY.md         # 3. Multi-year track record, % p.a. yield, Sharpe, drawdown

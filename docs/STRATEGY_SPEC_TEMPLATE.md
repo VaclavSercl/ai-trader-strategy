@@ -1,6 +1,6 @@
 # 📑 Strategy Specification Standard & Template (RFC-001)
 
-Every strategy submitted or stored in this repository must contain the following standard files within `strategies/<stage>/<STRATEGY_ID>-<slug>/`:
+Every strategy submitted or stored in this repository must contain the following standard files within `<stage_dir>/<STRATEGY_ID>-<slug>/` (under `01-live-production/`, `02-paper-trading/`, `03-backtested/`, or `04-proposals/`):
 
 1. `README.md` — Formal mathematical, financial, and execution specification.
 2. `AI_GENERATION_PROMPT.md` — Master prompt enabling any AI agent to recreate and deploy the strategy on any server.

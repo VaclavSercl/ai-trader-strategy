@@ -26,27 +26,26 @@ This repository serves as an authoritative, open-source library of mathematical 
 
 The strategies are categorized across 4 lifecycle stages according to their operational maturity:
 
-### 1️⃣ Live Production (`strategies/live/`) — Reálně nasazené v živém obchodování
+### 1️⃣ Live Production (`01-live-production/`) — Reálně nasazené v živém obchodování
 | ID | Strategie | Trhy | Roční výnos (% p.a.) | Max Drawdown | Sharpe | Exekuce | Řízení AI | Stav |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| [**T16**](strategies/live/T16-pullback-flow-stoikov/) | **Pullback Flow + Avellaneda-Stoikov** | BTC/USD Spot | **+48.5% p.a.** | **0.180%** | **4.85** | Micro-Impulse Taker + Maker Skew | Autonomní (ZITL) | 🟢 **Live Production** |
-| [**T14**](strategies/live/T14-triangular-fx-dislocation/) | **Triangular FX Dislocation** | BTC/USD, EUR/USD, BTC/EUR | **+16.5% p.a.** | **0.095%** | **11.45** | Zero-fee Maker Triangle | Autonomní (ZITL) | 🟢 **Live Production** |
-| [**T13**](strategies/live/T13-basis-funding-carry/) | **Delta-Neutral Basis Carry** | BTC/USD, BTC-PERP | **+13.2% p.a.** | **0.084%** | **8.92** | Spot/Perp Maker | Autonomní (ZITL) | 🟢 **Live Production** |
+| [**T14**](01-live-production/T14-triangular-fx-dislocation/) | **Triangular FX Dislocation** | BTC/USD, EUR/USD, BTC/EUR | **+16.5% p.a.** | **0.095%** | **11.45** | Zero-fee Maker Triangle | Autonomní (ZITL) | 🟢 **Live Production** |
+| [**T13**](01-live-production/T13-basis-funding-carry/) | **Delta-Neutral Basis Carry** | BTC/USD, BTC-PERP | **+13.2% p.a.** | **0.084%** | **8.92** | Spot/Perp Maker | Autonomní (ZITL) | 🟢 **Live Production** |
 
-### 2️⃣ Paper Trading (`strategies/paper-trading/`) — V živé paper kvalifikaci (30denní test)
+### 2️⃣ Paper Trading (`02-paper-trading/`) — V živé paper kvalifikaci (30denní test)
 | ID | Strategie | Trhy | Roční výnos (% p.a.) | Max Drawdown | Sharpe | Exekuce | Řízení AI | Stav |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| [**T15**](strategies/paper-trading/T15-mica-cross-basis/) | **MiCA Cross-Basis Carry & Triangular** | BTC, EUR, USD, USDC, USDT | **+28.4% p.a.** | **0.131%** | **14.60** | Post-Only Maker | Autonomní (ZITL) | 🟢 **Live Paper (Den 1/30)** |
+| [**T15**](02-paper-trading/T15-mica-cross-basis/) | **MiCA Cross-Basis Carry & Triangular** | BTC, EUR, USD, USDC, USDT | **+28.4% p.a.** | **0.131%** | **14.60** | Post-Only Maker | Autonomní (ZITL) | 🟢 **Live Paper (Den 1/30)** |
 
-### 3️⃣ Backtest Verified (`strategies/backtested/`) — Otestované na historických datech (1222 dnů)
+### 3️⃣ Backtest Verified (`03-backtested/`) — Otestované na historických datech (1222 dnů)
 | ID | Strategie | Trhy | Roční výnos (% p.a.) | Max Drawdown | Sharpe | Exekuce | Řízení AI | Stav |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| [**T12**](strategies/backtested/T12-kalman-cross-market/) | **Dynamic Kalman Filter Cointegration** | BTC/USD, ETH/USD | **+22.4% p.a.** | **0.280%** | **9.85** | Post-Only Maker | Autonomní (ZITL) | 🟡 **Backtest Passed** |
+| [**T12**](03-backtested/T12-kalman-cross-market/) | **Dynamic Kalman Filter Cointegration** | BTC/USD, ETH/USD | **+22.4% p.a.** | **0.280%** | **9.85** | Post-Only Maker | Autonomní (ZITL) | 🟡 **Backtest Passed** |
 
-### 4️⃣ Proposals & Incubator (`strategies/proposals/`) — Návrhy strategií k otestování
+### 4️⃣ Proposals & Incubator (`04-proposals/`) — Návrhy strategií k otestování
 | ID | Strategie | Trhy | Cílový výnos (% p.a.) | Max Drawdown | Model | Řízení AI | Stav |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
-| [**P019**](strategies/proposals/P019-dex-cex-synthetic-carry/) | **DEX-CEX Carry & AMM Hook Engine** | BTC/USDC, ETH/USDC | **+34.0% p.a. (est.)** | $< 1.5\%$ | AMM LP + Perp Short | Autonomní (ZITL) | 💡 **Proposal** |
+| [**P019**](04-proposals/P019-dex-cex-synthetic-carry/) | **DEX-CEX Carry & AMM Hook Engine** | BTC/USDC, ETH/USDC | **+34.0% p.a. (est.)** | $< 1.5\%$ | AMM LP + Perp Short | Autonomní (ZITL) | 💡 **Proposal** |
 
 ---
 
@@ -54,26 +53,26 @@ The strategies are categorized across 4 lifecycle stages according to their oper
 
 ```text
 ai-trader-strategy/
-├── README.md                                  # Hlavní registr, leaderboard a přehled
-├── LICENSE                                    # Open-source MIT licence
-├── scripts/
-│   └── validate_strategies.py                 # Validační test specifikací a referenčních enginů
+├── 01-live-production/                        # 1. Reálně nasazené a otestované v živém obchodování
+│   ├── T13-basis-funding-carry/
+│   └── T14-triangular-fx-dislocation/
+├── 02-paper-trading/                          # 2. Strategie v aktivním paper tradingu (kvalifikace)
+│   └── T15-mica-cross-basis/
+├── 03-backtested/                             # 3. Strategie otestované na historických datech
+│   └── T12-kalman-cross-market/
+├── 04-proposals/                              # 4. Strategie k otestování (návrhy a inkubátor)
+│   └── P019-dex-cex-synthetic-carry/
 ├── docs/
 │   ├── AUTONOMOUS_AI_FRAMEWORK.md             # Architektura pro autonomní AI provoz (Zero Human in the Loop)
 │   ├── STRATEGY_SPEC_TEMPLATE.md              # RFC-001 šablona pro tvorbu specifikací
 │   └── PROMPT_ENGINEERING_GUIDE.md            # Metodika promptování kvantové AI
-└── strategies/
-    ├── README.md                              # Přehled stromu a postupových kritérií
-    ├── live/                                  # 1. Reálně nasazené a otestované v živém obchodování
-    │   ├── T13-basis-funding-carry/
-    │   ├── T14-triangular-fx-dislocation/
-    │   └── T16-pullback-flow-stoikov/
-    ├── paper-trading/                         # 2. Strategie v aktivním paper tradingu (kvalifikace)
-    │   └── T15-mica-cross-basis/
-    ├── backtested/                            # 3. Strategie otestované na historických datech
-    │   └── T12-kalman-cross-market/
-    └── proposals/                             # 4. Strategie k otestování (návrhy a inkubátor)
-        └── P019-dex-cex-synthetic-carry/
+├── scripts/
+│   └── validate_strategies.py                 # Validační test specifikací a popisů
+├── AGENTS.md                                  # Závazné instrukce pro autonomní AI agenty
+├── CLAUDE.md                                  # Pravidla pro Claude Code asistenty
+├── CONTRIBUTING.md                            # Standard pro přidávání nových strategií
+├── LICENSE                                    # Open-source MIT licence
+└── README.md                                  # Hlavní registr, leaderboard a přehled
 ```
 
 ---
@@ -118,8 +117,8 @@ flowchart TD
 ## 🚀 How to Implement Any Strategy with an AI Agent
 
 To generate, backtest, and deploy any strategy in this repository:
-1. Navigate to the strategy's directory (e.g., [`strategies/paper-trading/T15-mica-cross-basis/`](strategies/paper-trading/T15-mica-cross-basis/)).
-2. Open [`AI_GENERATION_PROMPT.md`](strategies/paper-trading/T15-mica-cross-basis/AI_GENERATION_PROMPT.md).
+1. Navigate to the strategy's directory (e.g., [`02-paper-trading/T15-mica-cross-basis/`](02-paper-trading/T15-mica-cross-basis/)).
+2. Open [`AI_GENERATION_PROMPT.md`](02-paper-trading/T15-mica-cross-basis/AI_GENERATION_PROMPT.md).
 3. Feed the prompt into your AI agent or CLI coding assistant (e.g. Claude Code, Codex, Hermes, Gemini CLI, Cursor, or LangGraph runner).
 4. The AI agent will autonomously:
    - Implement the mathematical pricing and Ornstein-Uhlenbeck mean-reverting filter.
@@ -134,10 +133,10 @@ To generate, backtest, and deploy any strategy in this repository:
 Any autonomous AI agent (or researcher using an AI agent) that designs a new trading strategy or proposal must follow the **[AI Agent Contribution Guide (CONTRIBUTING.md)](CONTRIBUTING.md)**:
 
 1. **Pick the Right Stage**:
-   - `strategies/proposals/` — New theoretical ideas and incubator hypotheses.
-   - `strategies/backtested/` — Falsified on $\ge 1,000$ days of data (Sharpe $> 1.0$, Max DD $< 10\%$).
-   - `strategies/paper-trading/` — Live orderbook paper simulation (30-day qualification).
-   - `strategies/live/` — Production deployment.
+   - `04-proposals/` — New theoretical ideas and incubator hypotheses.
+   - `03-backtested/` — Falsified on $\ge 1,000$ days of data (Sharpe $> 1.0$, Max DD $< 10\%$).
+   - `02-paper-trading/` — Live orderbook paper simulation (30-day qualification).
+   - `01-live-production/` — Production deployment.
 2. **Create Standard Files (Exactly 4 Files)**:
    - `README.md` (detailed strategy description, market dynamics, mathematical formulation, triggers).
    - `AI_GENERATION_PROMPT.md` (reproducible master prompt allowing any AI agent to implement the strategy on any server).

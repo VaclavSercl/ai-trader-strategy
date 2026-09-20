@@ -23,22 +23,22 @@ This repository is an authoritative, universal knowledge base of quantitative an
 
 ---
 
-## 2. Strategy Lifecycle Stages (`strategies/`)
+## 2. Strategy Lifecycle Stages (Top-Level Category Folders)
 
-Every strategy belongs to exactly one of the 4 lifecycle folders:
+Every strategy belongs to exactly one of the 4 lifecycle category directories situated directly in the repository root:
 
 | Directory | Stage | Description |
 | :--- | :--- | :--- |
-| `strategies/proposals/<ID>-<slug>/` | **1. Proposals & Incubator** | Theoretical hypotheses, economic rationale, pre-backtest specifications, and AI master prompts. |
-| `strategies/backtested/<ID>-<slug>/` | **2. Backtest Verified** | Strategies validated on historical multi-venue data ($\ge 1,000$ days), Sharpe $> 1.0$, Max DD $< 10\%$. |
-| `strategies/paper-trading/<ID>-<slug>/` | **3. Paper Trading** | Strategies currently undergoing active live orderbook paper simulation qualification. |
-| `strategies/live/<ID>-<slug>/` | **4. Live Production** | Strategies actively deployed and running with real capital in live market production. |
+| `01-live-production/<ID>-<slug>/` | **1. Live Production** | Strategies actively deployed and running with real capital in live market production. |
+| `02-paper-trading/<ID>-<slug>/` | **2. Paper Trading** | Strategies currently undergoing active live orderbook paper simulation qualification. |
+| `03-backtested/<ID>-<slug>/` | **3. Backtest Verified** | Strategies validated on historical multi-venue data ($\ge 1,000$ days), Sharpe $> 1.0$, Max DD $< 10\%$. |
+| `04-proposals/<ID>-<slug>/` | **4. Proposals & Incubator** | Theoretical hypotheses, economic rationale, pre-backtest specifications, and AI master prompts. |
 
 ---
 
 ## 3. Required Files per Strategy Entry (Exactly 4 Files)
 
-Whenever you create or modify a strategy in `strategies/<stage>/<ID>-<slug>/`, you **MUST** ensure all 4 standard descriptive files exist:
+Whenever you create or modify a strategy in `<stage_dir>/<ID>-<slug>/`, you **MUST** ensure all 4 standard descriptive files exist:
 
 1. `README.md` — Complete, detailed strategy description: economic edge, mathematical formulation, stochastic processes, market dislocation definitions, and fee/rebate structure.
 2. `AI_GENERATION_PROMPT.md` — Universal, self-contained master AI prompt allowing any other AI agent to implement the strategy on any server.
@@ -46,7 +46,7 @@ Whenever you create or modify a strategy in `strategies/<stage>/<ID>-<slug>/`, y
 4. `SPECIFICATION.json` — Machine-readable JSON metadata with strategy ID, name, status, markets, and yield metrics.
 
 > [!IMPORTANT]
-> Do **NOT** commit concrete implementation code (e.g. `.py` scripts) into `strategies/`. Keep this repository clean as a pure strategy description and prompt library.
+> Do **NOT** commit concrete implementation code (e.g. `.py` scripts) into strategy directories. Keep this repository clean as a pure strategy description and prompt library.
 
 ---
 
