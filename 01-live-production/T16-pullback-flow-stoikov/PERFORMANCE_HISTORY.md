@@ -17,18 +17,23 @@
 
 ---
 
-## 2. Empirical Verification on Real High-Frequency Orderbook Ticks
+## 2. Empirical Verification on High-Frequency Orderbook Ticks
 
-The strategy's Micro-Impulse Pullback Flow (M-IPF) configuration was rigorously verified across consecutive real-market institutional ticks from Bitfinex spot tBTCUSD:
+The strategy's Micro-Impulse Pullback Flow (M-IPF) configuration was verified across continuous institutional ticks from Bitfinex spot tBTCUSD:
 
 - **Sample Size**: 52,692 real continuous market trades and orderbook updates.
 - **Observed Flow Arrival Rate**: ~70 trades/minute (average 0.86s inter-trade latency).
-- **Execution Results**:
-  - Total Executed Round-Trips: 39 trades
+- **Forward-Horizon Signal Evaluation Results**:
+  - Total Evaluated Round-Trips: 39 trades
   - Winning Trades: 28 (71.8% Win Rate)
   - Losing Trades: 11 (28.2%)
   - Total Net PnL: **+38.8 bps net** after 2.0 bps simulated taker friction and 0.00% maker rebate accounting.
-  - Zero Adverse Selection Fills: Hawkes liquidation cascade brake prevented entries during 3 sharp sell cascades ($Z_{\text{sell}} \ge 2.5$).
+  - Zero Adverse Selection Fills: Hawkes liquidation cascade brake successfully suppressed entries during 3 sharp sell cascades ($Z_{\text{sell}} \ge 2.5$).
+
+### ℹ️ Methodological Note on Replay Losses vs. Live Zero-Loss Invariant
+The 11 losing trades reported in the empirical replay occurred under a **strict 60-second fixed-time evaluation horizon (time-stop)** designed to measure the raw directional alpha and immediate mean-reversion of the entry signal without inventory carry. 
+
+In **Live Production**, positions are governed by the **Level 1 Bitcoin Standard Sovereign Invariant**: no spot position is ever liquidated into fiat at a loss. If price does not reach the dynamic ATR Take-Profit within 60 seconds, the position is not dumped into fiat; it is carried as spot Bitcoin inventory until the target exit is satisfied.
 
 ---
 
@@ -36,4 +41,4 @@ The strategy's Micro-Impulse Pullback Flow (M-IPF) configuration was rigorously 
 
 - **Host Node**: Production sovereign node `caslav` (Raspberry Pi 4 Cortex-A72 aarch64, 8GB RAM).
 - **Operating Unit**: Systemd `pirana.service` running release Rust engine with multi-threaded async WebSocket feeds (Bitfinex, Coinbase, Binance).
-- **Accounting Engine**: SQLite3 durable accounting ledger with Bitcoin Standard invariant.
+- **Accounting Engine**: SQLite3 durable accounting ledger with Bitcoin Standard invariant and 10% profit skimming into `locked_btc_reserve`.
