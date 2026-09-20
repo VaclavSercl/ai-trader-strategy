@@ -29,6 +29,7 @@ The strategies are categorized across 4 lifecycle stages according to their oper
 ### 1️⃣ Live Production (`01-live-production/`) — Reálně nasazené v živém obchodování
 | ID | Strategie | Trhy | Roční výnos (% p.a.) | Max Drawdown | Sharpe | Exekuce | Řízení AI | Stav |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| [**T16**](01-live-production/T16-pullback-flow-stoikov/) | **Pullback Flow + Avellaneda-Stoikov** | BTC/USD Spot | **+48.5% p.a.** | **0.180%** | **4.85** | Micro-Impulse Taker + Maker Skew | Autonomní (ZITL) | 🟢 **Live Production** |
 | [**T14**](01-live-production/T14-triangular-fx-dislocation/) | **Triangular FX Dislocation** | BTC/USD, EUR/USD, BTC/EUR | **+16.5% p.a.** | **0.095%** | **11.45** | Zero-fee Maker Triangle | Autonomní (ZITL) | 🟢 **Live Production** |
 | [**T13**](01-live-production/T13-basis-funding-carry/) | **Delta-Neutral Basis Carry** | BTC/USD, BTC-PERP | **+13.2% p.a.** | **0.084%** | **8.92** | Spot/Perp Maker | Autonomní (ZITL) | 🟢 **Live Production** |
 
@@ -55,7 +56,8 @@ The strategies are categorized across 4 lifecycle stages according to their oper
 ai-trader-strategy/
 ├── 01-live-production/                        # 1. Reálně nasazené a otestované v živém obchodování
 │   ├── T13-basis-funding-carry/
-│   └── T14-triangular-fx-dislocation/
+│   ├── T14-triangular-fx-dislocation/
+│   └── T16-pullback-flow-stoikov/
 ├── 02-paper-trading/                          # 2. Strategie v aktivním paper tradingu (kvalifikace)
 │   └── T15-mica-cross-basis/
 ├── 03-backtested/                             # 3. Strategie otestované na historických datech
