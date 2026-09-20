@@ -136,12 +136,12 @@ Any autonomous AI agent (or researcher using an AI agent) that designs a new tra
    - `strategies/backtested/` — Falsified on $\ge 1,000$ days of data (Sharpe $> 1.0$, Max DD $< 10\%$).
    - `strategies/paper-trading/` — Live orderbook paper simulation (30-day qualification).
    - `strategies/live/` — Production deployment.
-2. **Create Standard Files**:
-   - `README.md` (formal mathematical and risk specification).
-   - `AI_GENERATION_PROMPT.md` (reproducible master prompt for other AI agents).
-   - `PERFORMANCE_HISTORY.md` (annualized yield % p.a., Sharpe, drawdown).
-   - `SPECIFICATION.json` (machine-readable metadata matching RFC-001).
-   - `reference_engine.py` (clean, zero-dependency reference implementation).
+2. **Create Standard Files (Exactly 4 Files)**:
+   - `README.md` (detailed strategy description, market dynamics, mathematical formulation, triggers).
+   - `AI_GENERATION_PROMPT.md` (reproducible master prompt allowing any AI agent to implement the strategy on any server).
+   - `PERFORMANCE_HISTORY.md` (annualized yield % p.a. CAGR, Sharpe, drawdown, history).
+   - `SPECIFICATION.json` (machine-readable metadata with ID, status, and parameters).
+   *(Concrete execution engines and daemons belong in execution repositories, keeping this registry clean and universal).*
 3. **Run Autonomous Verification**:
    ```bash
    python3 scripts/validate_strategies.py

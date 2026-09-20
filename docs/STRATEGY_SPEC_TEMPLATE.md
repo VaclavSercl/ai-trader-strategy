@@ -1,12 +1,13 @@
 # 📑 Strategy Specification Standard & Template (RFC-001)
 
-Every strategy submitted or stored in this repository must contain the following standard files within `strategies/<STRATEGY_ID>-<slug>/`:
+Every strategy submitted or stored in this repository must contain the following standard files within `strategies/<stage>/<STRATEGY_ID>-<slug>/`:
 
-1. `README.md` — Formal mathematical, financial, and risk specification.
-2. `AI_GENERATION_PROMPT.md` — Master prompt enabling any AI agent to recreate the strategy.
+1. `README.md` — Formal mathematical, financial, and execution specification.
+2. `AI_GENERATION_PROMPT.md` — Master prompt enabling any AI agent to recreate and deploy the strategy on any server.
 3. `PERFORMANCE_HISTORY.md` — Historical track record, backtest results, and annualized yield (% p.a.).
 4. `SPECIFICATION.json` — Machine-readable JSON metadata for autonomous AI ingestion.
-5. `reference_engine.py` — Pure, self-contained Python implementation.
+
+*(Note: Concrete execution engine code belongs to target execution repositories, keeping this registry clean, platform-agnostic, and purely descriptive).*
 
 ---
 

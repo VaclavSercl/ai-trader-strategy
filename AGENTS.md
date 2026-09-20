@@ -2,21 +2,24 @@
 
 > **ATTENTION AI AGENTS (Claude Code, OpenAI Codex, Hermes Agent, Devin, Cursor, Copilot, AGY, and Autonomous Bots)**:  
 > This file contains **MANDATORY, BINDING INSTRUCTIONS** for interacting with, developing, and contributing strategies to the `ai-trader-strategy` repository.  
-> You must strictly observe the architectural constraints, lifecycle pipeline, and validation gates defined herein.
+> You must strictly observe the repository purpose, architectural constraints, lifecycle pipeline, and validation gates defined herein.
 
 ---
 
-## 1. Project Mission & Architectural Standards
+## 1. Project Mission & Pure Description Standard
 
-This repository is an authoritative, platform-agnostic library of quantitative and statistical arbitrage strategies managed **100% autonomously by AI agents — Zero Human in the Loop (ZITL)**.
+This repository is an authoritative, universal knowledge base of quantitative and statistical arbitrage trading strategies designed for **autonomous AI agents — Zero Human in the Loop (ZITL)**.
 
 ### Core Architectural Standards:
-1. **PLATFORM & HARDWARE AGNOSTIC**:
+1. **STRATEGY DESCRIPTIONS & PROMPTS ONLY (NO CONCRETE ENGINE CODE)**:
+   - Concrete production implementations, exchange private keys, server daemons, and system scripts reside in separate execution repositories.
+   - This repository (`ai-trader-strategy`) contains **purely general strategy descriptions, mathematical specifications, performance histories, and AI generation prompts**.
+   - Every entry must be formulated so that **any AI agent can study the strategy specification and independently implement and deploy it on any arbitrary server, OS, or trading stack**.
+2. **PLATFORM & HARDWARE AGNOSTIC**:
    - **NEVER** write machine-specific, user-specific, or hardware-dependent paths (e.g. `/home/...`, `C:\...`, `/tmp/...`).
-   - Use relative paths via `pathlib.Path(__file__).resolve()`.
-   - All runtime settings must be configurable via standard environment variables.
-2. **STANDARD PYTHON IMPLEMENTATION**:
-   - Use standard library Python (>=3.10) with clean typing and zero exotic unpinned dependencies.
+   - Strategy descriptions and prompts must apply to any standard Linux/POSIX/Windows environment.
+3. **REPRODUCIBILITY VIA MASTER AI PROMPTS**:
+   - Every strategy must include an `AI_GENERATION_PROMPT.md` allowing any other LLM or autonomous agent to engineer the strategy from scratch.
 
 ---
 
@@ -24,24 +27,26 @@ This repository is an authoritative, platform-agnostic library of quantitative a
 
 Every strategy belongs to exactly one of the 4 lifecycle folders:
 
-| Directory | Stage | Entry Criteria |
+| Directory | Stage | Description |
 | :--- | :--- | :--- |
-| `strategies/proposals/<ID>-<slug>/` | **1. Proposals & Incubator** | Formal economic hypothesis + mathematical spread definition + Master AI Prompt. |
-| `strategies/backtested/<ID>-<slug>/` | **2. Backtest Verified** | $\ge 1,000$ days multi-venue data, Sharpe $> 1.0$, Max DD $< 10\%$, all F1-F7 gates passed. |
-| `strategies/paper-trading/<ID>-<slug>/` | **3. Paper Trading** | Completed Python reference engine, live orderbook paper daemon running in continuous simulation. |
-| `strategies/live/<ID>-<slug>/` | **4. Live Production** | $\ge 30$ consecutive days in paper trading, $\ge 100$ maker fills, verified execution. |
+| `strategies/proposals/<ID>-<slug>/` | **1. Proposals & Incubator** | Theoretical hypotheses, economic rationale, pre-backtest specifications, and AI master prompts. |
+| `strategies/backtested/<ID>-<slug>/` | **2. Backtest Verified** | Strategies validated on historical multi-venue data ($\ge 1,000$ days), Sharpe $> 1.0$, Max DD $< 10\%$. |
+| `strategies/paper-trading/<ID>-<slug>/` | **3. Paper Trading** | Strategies currently undergoing active live orderbook paper simulation qualification. |
+| `strategies/live/<ID>-<slug>/` | **4. Live Production** | Strategies actively deployed and running with real capital in live market production. |
 
 ---
 
-## 3. Required Files per Strategy Entry
+## 3. Required Files per Strategy Entry (Exactly 4 Files)
 
-Whenever you create or modify a strategy in `strategies/<stage>/<ID>-<slug>/`, you **MUST** ensure all 4 standard files exist:
+Whenever you create or modify a strategy in `strategies/<stage>/<ID>-<slug>/`, you **MUST** ensure all 4 standard descriptive files exist:
 
-1. `README.md` — Formal mathematical equations, stochastic model (e.g. Ornstein-Uhlenbeck), and execution rules.
-2. `AI_GENERATION_PROMPT.md` — Complete, self-contained master prompt allowing any *other* AI agent to recreate the strategy from scratch.
-3. `PERFORMANCE_HISTORY.md` — Empirical track record, annualized return (**`% p.a. CAGR`**), Sharpe, Sortino, Max Drawdown, and monthly returns matrix.
-4. `SPECIFICATION.json` — Machine-readable JSON metadata strictly adhering to the schema.
-5. `reference_engine.py` — (Required for stages 2–4) Zero-external-dependency Python implementation.
+1. `README.md` — Complete, detailed strategy description: economic edge, mathematical formulation, stochastic processes, market dislocation definitions, and fee/rebate structure.
+2. `AI_GENERATION_PROMPT.md` — Universal, self-contained master AI prompt allowing any other AI agent to implement the strategy on any server.
+3. `PERFORMANCE_HISTORY.md` — Empirical track record, annualized return (**`% p.a. CAGR`**), Sharpe, Sortino, Max Drawdown, and performance log.
+4. `SPECIFICATION.json` — Machine-readable JSON metadata with strategy ID, name, status, markets, and yield metrics.
+
+> [!IMPORTANT]
+> Do **NOT** commit concrete implementation code (e.g. `.py` scripts) into `strategies/`. Keep this repository clean as a pure strategy description and prompt library.
 
 ---
 
@@ -53,8 +58,8 @@ Before committing changes, you **MUST** run the automated validator:
 python3 scripts/validate_strategies.py
 ```
 
-- **Exit Code 0**: All strategy JSON schemas and reference engine smoke tests passed. You may commit.
-- **Exit Code 1**: Failure detected. You must parse the error output, fix the discrepancy, and re-run until it passes.
+- **Exit Code 0**: All strategy descriptions, prompts, specifications, and performance records verified.
+- **Exit Code 1**: Discrepancy detected. Parse the error output and resolve before committing.
 
 ---
 
