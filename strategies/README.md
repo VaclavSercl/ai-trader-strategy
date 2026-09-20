@@ -35,6 +35,7 @@ flowchart LR
 - **Status**: Plně certifikované strategie obchodující reálný kapitál.
 - **Kritéria**: Absolvovaná 30denní paper fáze, ověřená ziskovost a stabilní exekuce.
 - **Obsah**:
+  - [`T16-pullback-flow-stoikov/`](live/T16-pullback-flow-stoikov/) — Pullback Flow + Avellaneda-Stoikov Inventory Skew (+48.5 % p.a., Bitcoin Standard).
   - [`T13-basis-funding-carry/`](live/T13-basis-funding-carry/) — Delta-Neutral Basis & Funding Carry Engine (+13.2 % p.a.).
   - [`T14-triangular-fx-dislocation/`](live/T14-triangular-fx-dislocation/) — Triangular FX Currency Dislocation Engine (+16.5 % p.a.).
 

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "T16",
+  "slug": "pullback-flow-stoikov",
+  "name": "Micro-Impulse Pullback Flow with Avellaneda-Stoikov Inventory Skew",
+  "category": "High-Frequency Microstructure / Inventory Skew",
+  "version": "3.1.0",
+  "stage": "LIVE",
+  "target_annual_yield_pct": 48.5,
+  "max_drawdown_pct": 0.18,
+  "sharpe_ratio": 4.85,
+  "delta_neutral": false,
+  "execution_style": "MAKER_TAKER_HYBRID",
+  "base_assets": ["BTC"],
+  "quote_currencies": ["USD"],
+  "ai_autonomy_level": "ZERO_HUMAN_IN_THE_LOOP",
+  "accounting_standard": "BITCOIN_STANDARD",
+  "status": "LIVE_PRODUCTION"
+}
