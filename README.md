@@ -19,40 +19,58 @@ This repository serves as an authoritative, open-source library of mathematical 
 
 ---
 
-## 🏆 Verified Strategies Registry & Leaderboard
+---
 
-| ID | Strategy Name | Traded Assets | Structural Edge | Backtest Yield (% p.a.) | Realized Yield (% p.a.) | Max Drawdown | Sharpe Ratio | Execution Type | AI Autonomy | Status |
-| :--- | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [**T15**](strategies/T15-mica-cross-basis/) | **MiCA Cross-Basis Carry & Triangular Arb** | BTC, USD, EUR, USDC, USDT | MiCA EU banking spread + Perp Funding carry + Ornstein-Uhlenbeck mean-reversion | **+28.4% p.a.** | **+27.8% p.a.** (Paper) | **0.131%** | **14.60** | Post-Only Maker (Rebates) | Autonomous (ZITL) | 🟢 **Active Live Paper (Day 1/30)** |
-| [**T13**](strategies/T13-basis-funding-carry/) | **Delta-Neutral Basis & Funding Carry** | BTC/USD, BTC-PERP | Spot vs. Perpetual Funding Rate Contango + Maker fee rebates | **+13.2% p.a.** | **+12.8% p.a.** | **0.084%** | **8.92** | Spot Maker / Perp Maker | Autonomous (ZITL) | 🟢 **Active Paper** |
-| [**T14**](strategies/T14-triangular-fx-dislocation/) | **Triangular FX Currency Dislocation** | BTC/USD, EUR/USD, BTC/EUR | Synthetic cross-currency dislocation ($P_{\text{EUR}} = \frac{P_{\text{USD}}}{\text{EUR/USD}}$) | **+16.5% p.a.** | **+15.9% p.a.** | **0.095%** | **11.45** | Zero-fee Maker Triangle | Autonomous (ZITL) | 🟢 **Active Paper** |
+## 🏆 Verified Strategies Registry & Lifecycle Leaderboard
+
+The strategies are categorized across 4 lifecycle stages according to their operational maturity:
+
+### 1️⃣ Live Production (`strategies/live/`) — Reálně nasazené v živém obchodování
+| ID | Strategie | Trhy | Roční výnos (% p.a.) | Max Drawdown | Sharpe | Exekuce | Řízení AI | Stav |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| [**T14**](strategies/live/T14-triangular-fx-dislocation/) | **Triangular FX Dislocation** | BTC/USD, EUR/USD, BTC/EUR | **+16.5% p.a.** | **0.095%** | **11.45** | Zero-fee Maker Triangle | Autonomní (ZITL) | 🟢 **Live Production** |
+| [**T13**](strategies/live/T13-basis-funding-carry/) | **Delta-Neutral Basis Carry** | BTC/USD, BTC-PERP | **+13.2% p.a.** | **0.084%** | **8.92** | Spot/Perp Maker | Autonomní (ZITL) | 🟢 **Live Production** |
+
+### 2️⃣ Paper Trading (`strategies/paper-trading/`) — V živé paper kvalifikaci (30denní test)
+| ID | Strategie | Trhy | Roční výnos (% p.a.) | Max Drawdown | Sharpe | Exekuce | Řízení AI | Stav |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| [**T15**](strategies/paper-trading/T15-mica-cross-basis/) | **MiCA Cross-Basis Carry & Triangular** | BTC, EUR, USD, USDC, USDT | **+28.4% p.a.** | **0.131%** | **14.60** | Post-Only Maker | Autonomní (ZITL) | 🟢 **Live Paper (Den 1/30)** |
+
+### 3️⃣ Backtest Verified (`strategies/backtested/`) — Otestované na historických datech (1222 dnů)
+| ID | Strategie | Trhy | Roční výnos (% p.a.) | Max Drawdown | Sharpe | Exekuce | Řízení AI | Stav |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| [**T12**](strategies/backtested/T12-kalman-cross-market/) | **Dynamic Kalman Filter Cointegration** | BTC/USD, ETH/USD | **+22.4% p.a.** | **0.280%** | **9.85** | Post-Only Maker | Autonomní (ZITL) | 🟡 **Backtest Passed** |
+
+### 4️⃣ Proposals & Incubator (`strategies/proposals/`) — Návrhy strategií k otestování
+| ID | Strategie | Trhy | Cílový výnos (% p.a.) | Max Drawdown | Model | Řízení AI | Stav |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| [**P019**](strategies/proposals/P019-dex-cex-synthetic-carry/) | **DEX-CEX Carry & AMM Hook Engine** | BTC/USDC, ETH/USDC | **+34.0% p.a. (est.)** | $< 1.5\%$ | AMM LP + Perp Short | Autonomní (ZITL) | 💡 **Proposal** |
 
 ---
 
 ## 📂 Repository Architecture
 
-Each strategy in this repository adheres to a strict, standardized specification standard:
-
 ```text
 ai-trader-strategy/
-├── README.md                                  # Registry, leaderboard, and architecture overview
-├── LICENSE                                    # Open-source MIT License
+├── README.md                                  # Hlavní registr, leaderboard a přehled
+├── LICENSE                                    # Open-source MIT licence
+├── scripts/
+│   └── validate_strategies.py                 # Validační test specifikací a referenčních enginů
 ├── docs/
-│   ├── AUTONOMOUS_AI_FRAMEWORK.md             # Hardware-agnostic zero-human autonomous trading lifecycle
-│   ├── STRATEGY_SPEC_TEMPLATE.md              # RFC specification template for new strategies
-│   └── PROMPT_ENGINEERING_GUIDE.md            # Methodology for crafting prompt prompts for quant AI
-├── strategies/
-│   ├── T15-mica-cross-basis/
-│   │   ├── README.md                          # Full mathematical, financial, and risk specification
-│   │   ├── AI_GENERATION_PROMPT.md            # Complete prompt to generate the entire strategy via AI
-│   │   ├── PERFORMANCE_HISTORY.md             # Multi-year track record, % p.a. returns, and drawdown logs
-│   │   ├── SPECIFICATION.json                 # Machine-readable JSON Schema metadata for autonomous ingestion
-│   │   └── reference_engine.py                # Generic, zero-dependency Python reference implementation
-│   ├── T13-basis-funding-carry/
-│   └── T14-triangular-fx-dislocation/
-└── .github/
-    └── workflows/
-        └── validate-strategies.yml            # CI workflow checking JSON schemas and executing test suites
+│   ├── AUTONOMOUS_AI_FRAMEWORK.md             # Architektura pro autonomní AI provoz (Zero Human in the Loop)
+│   ├── STRATEGY_SPEC_TEMPLATE.md              # RFC-001 šablona pro tvorbu specifikací
+│   └── PROMPT_ENGINEERING_GUIDE.md            # Metodika promptování kvantové AI
+└── strategies/
+    ├── README.md                              # Přehled stromu a postupových kritérií
+    ├── live/                                  # 1. Reálně nasazené a otestované v živém obchodování
+    │   ├── T13-basis-funding-carry/
+    │   └── T14-triangular-fx-dislocation/
+    ├── paper-trading/                         # 2. Strategie v aktivním paper tradingu (kvalifikace)
+    │   └── T15-mica-cross-basis/
+    ├── backtested/                            # 3. Strategie otestované na historických datech
+    │   └── T12-kalman-cross-market/
+    └── proposals/                             # 4. Strategie k otestování (návrhy a inkubátor)
+        └── P019-dex-cex-synthetic-carry/
 ```
 
 ---

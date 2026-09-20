@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "P019",
+  "name": "DEX-CEX Synthetic Funding Rate Carry & Liquidity Hook Engine",
+  "stage": "PROPOSAL",
+  "target_annual_yield_pct": 34.0,
+  "max_drawdown_pct": 1.50,
+  "sharpe_ratio": 6.50,
+  "delta_neutral": true,
+  "execution_style": "AMM_HOOK_AND_CLOB_MAKER",
+  "base_assets": ["BTC", "ETH"],
+  "quote_currencies": ["USDC"],
+  "ai_autonomy_level": "ZERO_HUMAN_IN_THE_LOOP",
+  "status": "INCUBATOR_PROPOSAL"
+}
