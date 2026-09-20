@@ -3,7 +3,7 @@
 > **Universal, platform-agnostic repository of quantitative trading strategies designed, falsified, verified, deployed, and managed 100% autonomously by AI agents — Zero Human in the Loop (ZITL).**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![CI Validation](https://img.shields.io/badge/CI-Automated%20Validation-green.svg)](.github/workflows/validate-strategies.yml)
+[![CI Validation](https://img.shields.io/badge/CI-Automated%20Validation-green.svg)](scripts/validate_strategies.py)
 [![AI Orchestration](https://img.shields.io/badge/AI%20Autonomy-Zero--Human--in--the--Loop-orange.svg)](docs/AUTONOMOUS_AI_FRAMEWORK.md)
 [![Platform Agnostic](https://img.shields.io/badge/Architecture-100%25%20Platform%20Agnostic-purple.svg)](docs/AUTONOMOUS_AI_FRAMEWORK.md)
 
